@@ -28,6 +28,7 @@ body {
 .logo {
     /* Estilização do logo */
     font-size: 25px;
+    font-style: italic;
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
@@ -81,6 +82,9 @@ body {
     font-size: 56px;
     font-weight: 700;
     line-height: 1.2;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .7s;
 }
 
 .home-content h3 {
@@ -88,7 +92,11 @@ body {
     font-size: 32px;
     font-weight: 700;
     color: #0088e3;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
 }
+
 
 .home-content p {
     /* paragrafo abaixo da função */
@@ -112,6 +120,9 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     z-index: 1;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 1.8s;
 }
 
 .btn::before {
@@ -120,7 +131,7 @@ body {
     top: 0;
     left: 0;
     inset: 0;
-    background: linear-gradient(45deg, #0088e3, #a4a4a4 , #0088e3);
+    background: linear-gradient(45deg, #0088e3, #a4a4a4, #0088e3);
     background-size: 200%;
     background-position: 0 0;
     z-index: -1;
@@ -139,7 +150,7 @@ body {
     top: 0;
     left: 0;
     inset: 0;
-    background: linear-gradient(45deg, #0088e3, #a4a4a4 , #0088e3);
+    background: linear-gradient(45deg, #0088e3, #a4a4a4, #0088e3);
     background-size: 200%;
     background-position: 0 0;
     z-index: -1;
@@ -172,12 +183,30 @@ body {
     z-index: 1;
 }
 
+.home-sci a:nth-child(1) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(2) {
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(3) {
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
 .home-sci a::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background:linear-gradient(45deg, #0088e3, #a4a4a4);
+    background: linear-gradient(45deg, #0088e3, #a4a4a4);
     border-radius: 50%;
     z-index: -1;
     transition: .5s ease;
@@ -209,7 +238,11 @@ body {
 .home-img {
     width: 410px;
     height: 410px;
+    opacity: 0;
+    animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
+    animation-delay: 2.1s, 3.1s;
 }
+
 
 .home-img .glowing-circle {
     position: relative;
@@ -236,12 +269,12 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #020417;
     background: linear-gradient(45deg, #0088e3, #a4a4a4);
     border-radius: 50%;
+    animation: circleRotate 5s linear infinite;
 }
 
-.glowing-circle span:nth-child(1){
+.glowing-circle span:nth-child(1) {
     filter: blur(10px);
 
 }
@@ -274,6 +307,7 @@ body {
         opacity: 0;
         transform: translateY(100px)
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -281,64 +315,149 @@ body {
 }
 
 
+/* ANIMACAO H1 */
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ANIMACAO H3  */
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ANIMACAO REDES SOCIAIS */
+@keyframes slideBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ANIMACAO FOTO */
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale (0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-24px);
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes circleRotate  {
+    0% {
+        transform: rotate (0);
+    }
+
+    100% {
+        transform: rotate (360deg);
+    }
+
+}
 
 
 
 
-
+/*-----------------------------------------------------*/
+/* REPONSIVIDADE */
 @media only screen and (max-width: 768px) {
     .header {
         padding: 20px 5%;
     }
-    
+
     .navbar a {
         margin-left: 15px;
     }
-    
+
     .home {
         padding: 50px 5% 0;
         flex-direction: column;
         align-items: center;
     }
-    .home-sci  {
-    display: inline-flex;
-    margin-top: 30px;
+
+    .home-sci {
+        display: inline-flex;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        gap: 10px;
     }
-    
+
     .home-content {
         max-width: none;
         margin-left: 0;
         text-align: center;
     }
+
     .home-content h1 {
         font-size: 40px;
     }
+
     .home-content h3 {
         font-size: 20px;
     }
-    
+
     .btn {
         width: 150px;
         height: 40px;
         font-size: 16px;
         margin-bottom: 40px;
     }
-  
-  
+
+
 
 }
 
-@media only screen and (max-width: 1156px)  and (min-width: 768px) {
+@media only screen and (max-width: 1156px) and (min-width: 768px) {
 
     .home-content h1 {
         font-size: 40px;
     }
+
     .home-content h3 {
         font-size: 20px;
     }
-    .home-sci  {
+
+    .home-sci {
         margin-right: 70px;
-        }
+    }
 
     .home-img {
         margin-left: 50px;
